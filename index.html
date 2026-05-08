@@ -615,8 +615,20 @@
         order: 2;
       }
 
-      .person__media .image-placeholder {
-        min-height: clamp(340px, 42vw, 560px);
+      .person__media {
+        position: relative;
+        width: 100%;
+      }
+
+      .person__photo {
+        display: block;
+        width: 100%;
+        height: clamp(340px, 42vw, 560px);
+        object-fit: cover;
+        object-position: center top;
+        border-radius: var(--radius-image);
+        background: rgba(57, 96, 158, 0.04);
+        box-shadow: 0 0 0 1px rgba(57, 96, 158, 0.08);
       }
 
       .person__name {
@@ -1632,10 +1644,12 @@
 
         <div class="content-row quote-flow">
           <article class="person reveal">
-            <div class="person__media">
-              <div class="image-placeholder media-image media-reveal">
-                Место для фото
-              </div>
+            <div class="person__media media-reveal">
+              <img
+                class="person__photo"
+                src="./assets/persons/korolev.jpg"
+                alt="Фото Виталия Геннадьевича Королёва, временно исполняющего обязанности Губернатора Тверской области"
+              />
             </div>
             <div class="person__content">
               <h3 class="person__name">Королёв Виталий Геннадьевич</h3>
@@ -1654,10 +1668,12 @@
           </article>
 
           <article class="person reveal">
-            <div class="person__media">
-              <div class="image-placeholder media-image media-reveal">
-                Место для фото
-              </div>
+            <div class="person__media media-reveal">
+              <img
+                class="person__photo"
+                src="./assets/persons/podtihova.webp"
+                alt="Фото Марины Ивановны Подтиховой, заместителя Председателя Правительства Тверской области — Министра финансов Тверской области"
+              />
             </div>
             <div class="person__content">
               <h3 class="person__name">Подтихова Марина Ивановна</h3>
@@ -1676,10 +1692,12 @@
           </article>
 
           <article class="person reveal">
-            <div class="person__media">
-              <div class="image-placeholder media-image media-reveal">
-                Место для фото
-              </div>
+            <div class="person__media media-reveal">
+              <img
+                class="person__photo"
+                src="./assets/persons/golubev.webp"
+                alt="Фото Сергея Анатольевича Голубева, Председателя Законодательного собрания Тверской области"
+              />
             </div>
             <div class="person__content">
               <h3 class="person__name">Сергей Анатольевич Голубев</h3>
@@ -1950,7 +1968,7 @@
                       Место для архивного документа
                     </div>
                     <p class="gallery-caption">
-                      Архивный документ финансовых органов Тверской области
+                      Подпись для архивного документа
                     </p>
                   </article>
                   <article class="gallery-item">
@@ -1958,7 +1976,7 @@
                       Место для фотографии
                     </div>
                     <p class="gallery-caption">
-                      Историческая фотография или материал из архива
+                      Подпись для архивного документа
                     </p>
                   </article>
                   <article class="gallery-item">
@@ -1966,7 +1984,7 @@
                       Место для материала
                     </div>
                     <p class="gallery-caption">
-                      Документ, связанный с развитием финансовой системы региона
+                      Подпись для архивного документа
                     </p>
                   </article>
                   <article class="gallery-item">
@@ -1974,7 +1992,7 @@
                       Место для фотографии
                     </div>
                     <p class="gallery-caption">
-                      Фотография здания, события или сотрудника ведомства
+                      Подпись для архивного документа
                     </p>
                   </article>
                   <article class="gallery-item">
@@ -1982,7 +2000,7 @@
                       Место для документа
                     </div>
                     <p class="gallery-caption">
-                      Материал для юбилейной цифровой экспозиции
+                      Подпись для архивного документа
                     </p>
                   </article>
                 </div>
