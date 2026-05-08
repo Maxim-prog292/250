@@ -1,0 +1,2380 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>250 лет финансовым органам Тверской области</title>
+    <style>
+      :root {
+        --blue: #39609e;
+        --white: #ffffff;
+        --bg: #f2f1ec;
+        --radius-image: 24px;
+        --page-x: clamp(22px, 6vw, 110px);
+        --section-gap: clamp(96px, 16vw, 220px);
+        --text-width: 760px;
+        --wide-width: 1280px;
+        --font-main: Arial, Helvetica, sans-serif;
+        --font-serif: Georgia, "Times New Roman", serif;
+        --scrollbar-size: 10px;
+        --scrollbar-track: var(--bg);
+        --scrollbar-thumb: var(--blue);
+        --scrollbar-thumb-hover: var(--blue);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        overflow-x: clip;
+        scrollbar-width: thin;
+        scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+      }
+
+      html::-webkit-scrollbar {
+        width: var(--scrollbar-size);
+        height: var(--scrollbar-size);
+      }
+
+      html::-webkit-scrollbar-track {
+        background: var(--scrollbar-track);
+      }
+
+      html::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb);
+      }
+
+      html::-webkit-scrollbar-thumb:hover {
+        background: var(--scrollbar-thumb-hover);
+      }
+
+      body.main-scrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--blue);
+        font-family: var(--font-main);
+        overflow-x: clip;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        pointer-events: none;
+        opacity: 0.055;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+        mix-blend-mode: multiply;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .page {
+        position: relative;
+        min-height: 100vh;
+        padding: 0 var(--page-x);
+        overflow-x: clip;
+      }
+
+      .flow-anchor {
+        position: relative;
+        scroll-margin-top: 80px;
+      }
+
+      .content-row {
+        width: min(100%, var(--wide-width));
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      section > .content-row,
+      .hero__sticky > .content-row,
+      .timeline-sticky__inner > .content-row,
+      .final > .content-row,
+      .gallery > .content-row,
+      .today > .content-row,
+      .congrats > .content-row,
+      .history > .content-row {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .section-title {
+        margin: 0;
+        color: var(--blue);
+        font-family: var(--font-serif);
+        font-size: clamp(48px, 8.5vw, 132px);
+        font-weight: 400;
+        line-height: 0.92;
+        letter-spacing: -0.055em;
+        opacity: 0;
+      }
+
+      .section-title.is-typed {
+        opacity: 1;
+      }
+
+      .type-caret {
+        display: inline-block;
+        width: 0.08em;
+        height: 0.82em;
+        margin-left: 0.04em;
+        background: var(--blue);
+        vertical-align: -0.06em;
+        animation: caretBlink 0.8s steps(1) infinite;
+      }
+
+      @keyframes caretBlink {
+        0%,
+        48% {
+          opacity: 1;
+        }
+        49%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .section-title.small {
+        font-size: clamp(38px, 5.4vw, 86px);
+        line-height: 0.98;
+      }
+
+      .section-text {
+        max-width: var(--text-width);
+        margin: 0;
+        color: var(--blue);
+        font-size: clamp(18px, 1.55vw, 25px);
+        font-weight: 400;
+        line-height: 1.45;
+        letter-spacing: -0.02em;
+      }
+
+      .section-text.small {
+        font-size: clamp(15px, 1.05vw, 18px);
+        line-height: 1.55;
+      }
+
+      .media-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: var(--radius-image);
+      }
+
+      .image-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 320px;
+        border-radius: var(--radius-image);
+        color: var(--blue);
+        font-size: 18px;
+        line-height: 1.3;
+        text-align: center;
+        background:
+          repeating-linear-gradient(
+            45deg,
+            rgba(57, 96, 158, 0.08) 0 1px,
+            transparent 1px 14px
+          ),
+          var(--white);
+        outline: 2px solid rgba(57, 96, 158, 0.18);
+        outline-offset: -2px;
+      }
+
+      .site-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        display: grid;
+        place-items: center;
+        padding: var(--page-x);
+        background: var(--bg);
+        color: var(--blue);
+        overflow: hidden;
+        transition:
+          opacity 0.65s ease,
+          visibility 0.65s ease;
+      }
+
+      .site-loader.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .site-loader__year {
+        margin: 0;
+        font-family: var(--font-serif);
+        font-size: clamp(96px, 28vw, 420px);
+        font-weight: 400;
+        line-height: 0.72;
+        letter-spacing: -0.075em;
+        font-variant-numeric: tabular-nums;
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+
+      .site-loader__year.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .site-loader__year.is-fading {
+        opacity: 0;
+        transform: translateY(-12px) scale(0.985);
+      }
+
+      body.is-loading {
+        overflow: hidden;
+      }
+
+      .side-nav {
+        position: fixed;
+        left: clamp(12px, 2vw, 34px);
+        top: 50dvh;
+        z-index: 500;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px 10px;
+        transform: translate3d(0, -50%, 0);
+        overflow: visible;
+        contain: layout style;
+        opacity: 1;
+        transition: opacity 0.35s ease;
+      }
+
+      .side-nav.is-idle {
+        opacity: 0.2;
+      }
+
+      .side-nav:hover {
+        opacity: 1 !important;
+      }
+
+      .side-nav__item {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        width: auto;
+        min-width: 56px;
+        min-height: 38px;
+        border: 0;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        box-shadow: none;
+        color: var(--blue);
+        cursor: pointer;
+        transition:
+          background 0.22s ease,
+          box-shadow 0.22s ease,
+          min-width 0.22s ease;
+        white-space: nowrap;
+        overflow: visible;
+      }
+
+      .side-nav__line {
+        display: block;
+        width: 28px;
+        height: 2px;
+        background: var(--blue);
+        border-radius: 999px;
+        transition:
+          opacity 0.22s ease,
+          width 0.3s ease;
+      }
+
+      .side-nav__label {
+        display: inline-block;
+        max-width: 0;
+        opacity: 0;
+        overflow: hidden;
+        font-size: 13px;
+        line-height: 1;
+        letter-spacing: 0.02em;
+        transform: translateX(-4px);
+        transition:
+          opacity 0.22s ease,
+          transform 0.22s ease,
+          max-width 0.28s ease;
+        pointer-events: none;
+      }
+
+      .side-nav:hover .side-nav__item,
+      .side-nav__item.is-active {
+        min-width: 0;
+        width: auto;
+        background: rgba(242, 241, 236, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 0 0 1px rgba(57, 96, 158, 0.12);
+      }
+
+      .side-nav:hover .side-nav__line,
+      .side-nav__item.is-active .side-nav__line {
+        opacity: 0;
+        width: 0;
+      }
+
+      .side-nav:hover .side-nav__label,
+      .side-nav__item.is-active .side-nav__label {
+        max-width: 240px;
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .mobile-nav {
+        display: none;
+        align-items: center;
+        min-height: 38px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(242, 241, 236, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 0 0 1px rgba(57, 96, 158, 0.12);
+      }
+
+      .mobile-menu-button {
+        position: fixed;
+        top: 14px;
+        right: 14px;
+        z-index: 60;
+        display: none;
+        align-items: center;
+        gap: 10px;
+        border: 0;
+        min-height: 38px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(242, 241, 236, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 0 0 1px rgba(57, 96, 158, 0.12);
+        color: var(--blue);
+        cursor: pointer;
+      }
+
+      .mobile-menu-button__text {
+        font-size: 14px;
+        line-height: 1;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .mobile-menu-button__icon {
+        position: relative;
+        display: block;
+        width: 28px;
+        height: 12px;
+      }
+
+      .mobile-menu-button__icon::before,
+      .mobile-menu-button__icon::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--blue);
+        transition:
+          transform 0.25s ease,
+          top 0.25s ease;
+      }
+
+      .mobile-menu-button__icon::before {
+        top: 0;
+      }
+
+      .mobile-menu-button__icon::after {
+        top: 10px;
+      }
+
+      .mobile-menu-button.is-open .mobile-menu-button__icon::before {
+        top: 5px;
+        transform: rotate(45deg);
+      }
+
+      .mobile-menu-button.is-open .mobile-menu-button__icon::after {
+        top: 5px;
+        transform: rotate(-45deg);
+      }
+
+      .mobile-menu-panel {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        display: none;
+        align-items: center;
+        padding: 72px 24px 40px;
+        background: var(--bg);
+        color: var(--blue);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+      }
+
+      .mobile-menu-panel.is-open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-menu-panel__list {
+        display: grid;
+        gap: 22px;
+        width: 100%;
+      }
+
+      .mobile-menu-panel__item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        color: var(--blue);
+        font-family: var(--font-serif);
+        font-size: clamp(34px, 11vw, 58px);
+        line-height: 0.95;
+        letter-spacing: -0.055em;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .mobile-menu-panel__item::after {
+        content: "";
+        display: block;
+        flex: 0 0 28px;
+        height: 2px;
+        background: var(--blue);
+        opacity: 0.35;
+      }
+
+      .mobile-menu-panel__item.is-active::after {
+        opacity: 1;
+        flex-basis: 54px;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 220vh;
+        padding: 0;
+      }
+
+      .hero__sticky {
+        position: sticky;
+        top: 0;
+        min-height: 100vh;
+        display: grid;
+        align-items: center;
+        padding: clamp(80px, 10vw, 130px) 0 var(--section-gap);
+        overflow: hidden;
+      }
+
+      .hero__grid {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+        gap: clamp(34px, 7vw, 120px);
+        align-items: end;
+      }
+
+      .hero__title {
+        margin: 0;
+        color: var(--blue);
+        font-family: var(--font-serif);
+        font-size: clamp(62px, 12.3vw, 178px);
+        font-weight: 400;
+        line-height: 0.82;
+        letter-spacing: -0.07em;
+      }
+
+      .hero__year {
+        display: block;
+        margin-bottom: clamp(12px, 2vw, 28px);
+        font-size: clamp(108px, 22vw, 330px);
+        line-height: 0.72;
+      }
+
+      .hero__lead {
+        max-width: 560px;
+        margin-top: clamp(28px, 4vw, 54px);
+      }
+
+      .hero__figure {
+        min-height: clamp(320px, 48vw, 640px);
+      }
+
+      .hero-photo-compare {
+        position: relative;
+        width: 100%;
+        height: clamp(320px, 48vw, 640px);
+        overflow: hidden;
+        border-radius: var(--radius-image);
+        background: var(--bg);
+      }
+
+      .hero-photo-compare__image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: var(--radius-image);
+        user-select: none;
+        pointer-events: none;
+      }
+
+      .hero-photo-compare__image--old {
+        z-index: 1;
+        opacity: 1;
+      }
+
+      .hero-photo-compare__image--new {
+        z-index: 2;
+        opacity: var(--hero-photo-progress, 0);
+        transform: scale(calc(1.025 - var(--hero-photo-progress, 0) * 0.025));
+        transition:
+          opacity 0.08s linear,
+          transform 0.08s linear;
+      }
+
+      .congrats {
+        padding: 0 0 var(--section-gap);
+      }
+
+      .intro-split {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
+        gap: clamp(32px, 7vw, 120px);
+        align-items: start;
+        margin-bottom: clamp(70px, 10vw, 150px);
+      }
+
+      .names-list {
+        display: grid;
+        gap: 18px;
+        margin-top: 10px;
+      }
+
+      .names-list p {
+        margin: 0;
+        max-width: 620px;
+        font-family: var(--font-serif);
+        font-size: clamp(25px, 3.2vw, 52px);
+        line-height: 1;
+        letter-spacing: -0.045em;
+      }
+
+      .quote-flow {
+        margin-left: auto;
+        margin-right: auto;
+        display: grid;
+        gap: clamp(80px, 12vw, 180px);
+      }
+
+      .person {
+        display: grid;
+        grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+        gap: clamp(32px, 7vw, 110px);
+        align-items: center;
+      }
+
+      .person:nth-child(even) {
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 0.72fr);
+      }
+
+      .person:nth-child(even) .person__media {
+        order: 2;
+      }
+
+      .person__media .image-placeholder {
+        min-height: clamp(340px, 42vw, 560px);
+      }
+
+      .person__name {
+        margin: 0 0 14px;
+        font-family: var(--font-serif);
+        font-size: clamp(34px, 5.5vw, 82px);
+        font-weight: 400;
+        line-height: 0.95;
+        letter-spacing: -0.055em;
+      }
+
+      .person__role,
+      .person__source {
+        margin: 0;
+        max-width: 560px;
+        font-size: clamp(15px, 1.15vw, 18px);
+        line-height: 1.45;
+      }
+
+      .person__source {
+        margin-top: 18px;
+        opacity: 0.78;
+      }
+
+      .person__quote {
+        margin: clamp(26px, 4vw, 52px) 0 0;
+        max-width: 760px;
+        font-family: var(--font-serif);
+        font-size: clamp(28px, 4.2vw, 64px);
+        font-style: italic;
+        font-weight: 400;
+        line-height: 1.05;
+        letter-spacing: -0.045em;
+      }
+
+      .history {
+        padding: 0 0 var(--section-gap);
+      }
+
+      .history__intro {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1fr);
+        gap: clamp(32px, 7vw, 120px);
+        align-items: end;
+        margin-bottom: clamp(56px, 9vw, 120px);
+      }
+
+      .timeline-shell {
+        position: relative;
+        width: min(calc(100vw - var(--page-x) * 2), var(--wide-width));
+        height: clamp(560px, 70vh, 680px);
+        margin-left: auto;
+        margin-right: auto;
+        overflow: visible;
+      }
+
+      .timeline-line {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        z-index: 1;
+        height: 5px;
+        background: var(--blue);
+        transform: translateY(-50%) scaleX(0);
+        transform-origin: left center;
+        transition: transform 1.2s ease;
+        pointer-events: none;
+      }
+
+      .timeline-shell.is-visible .timeline-line {
+        transform: translateY(-50%) scaleX(1);
+      }
+
+      .timeline-track {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: stretch;
+        gap: clamp(34px, 4.5vw, 78px);
+        width: max-content;
+        height: 100%;
+        padding: 0;
+        will-change: transform;
+      }
+
+      .timeline-card {
+        --timeline-stem: clamp(58px, 7vh, 86px);
+        position: relative;
+        width: clamp(270px, 24vw, 370px);
+        height: 100%;
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        opacity: 0;
+        transform: translateY(26px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+        overflow: visible;
+      }
+
+      .timeline-shell.is-visible .timeline-card {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .timeline-shell.is-visible .timeline-card:nth-child(2) {
+        transition-delay: 0.08s;
+      }
+      .timeline-shell.is-visible .timeline-card:nth-child(3) {
+        transition-delay: 0.16s;
+      }
+      .timeline-shell.is-visible .timeline-card:nth-child(4) {
+        transition-delay: 0.24s;
+      }
+      .timeline-shell.is-visible .timeline-card:nth-child(5) {
+        transition-delay: 0.32s;
+      }
+      .timeline-shell.is-visible .timeline-card:nth-child(6) {
+        transition-delay: 0.4s;
+      }
+      .timeline-shell.is-visible .timeline-card:nth-child(7) {
+        transition-delay: 0.48s;
+      }
+      .timeline-shell.is-visible .timeline-card:nth-child(8) {
+        transition-delay: 0.56s;
+      }
+      .timeline-shell.is-visible .timeline-card:nth-child(9) {
+        transition-delay: 0.64s;
+      }
+      .timeline-shell.is-visible .timeline-card:nth-child(10) {
+        transition-delay: 0.72s;
+      }
+
+      .timeline-card::before,
+      .timeline-card::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--blue);
+      }
+
+      .timeline-card::before {
+        top: 50%;
+        z-index: 5;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        box-shadow:
+          0 0 0 6px var(--bg),
+          0 0 0 8px var(--blue);
+        transform: translate(-50%, -50%);
+      }
+
+      .timeline-card::after {
+        z-index: 4;
+        width: 2px;
+        height: var(--timeline-stem);
+      }
+
+      .timeline-card:nth-child(odd) {
+        justify-content: flex-start;
+      }
+
+      .timeline-card:nth-child(odd)::after {
+        top: calc(50% - var(--timeline-stem));
+      }
+
+      .timeline-card:nth-child(even) {
+        justify-content: flex-end;
+      }
+
+      .timeline-card:nth-child(even)::after {
+        top: 50%;
+      }
+
+      .timeline-card__year {
+        margin: 0 0 8px;
+        font-family: var(--font-serif);
+        font-size: clamp(42px, 5vw, 72px);
+        font-style: italic;
+        font-weight: 700;
+        line-height: 0.82;
+        letter-spacing: -0.075em;
+      }
+
+      .timeline-card__title {
+        margin: 0 0 10px;
+        max-width: 100%;
+        font-family: var(--font-serif);
+        font-size: clamp(22px, 2.3vw, 34px);
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: -0.05em;
+      }
+
+      .timeline-card__body {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 96px;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .timeline-card__text {
+        margin: 0;
+        font-size: clamp(13px, 0.95vw, 15px);
+        line-height: 1.35;
+        white-space: normal;
+      }
+
+      .timeline-card .image-placeholder {
+        min-height: 96px;
+        font-size: 12px;
+        border-radius: 16px;
+      }
+
+      .today,
+      .gallery,
+      .final {
+        padding: 0 0 var(--section-gap);
+      }
+
+      .facts-line {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(22px, 5vw, 80px);
+        margin-top: clamp(50px, 8vw, 110px);
+      }
+
+      .fact__number {
+        margin: 0 0 12px;
+        font-family: var(--font-serif);
+        font-size: clamp(62px, 10vw, 150px);
+        line-height: 0.85;
+        letter-spacing: -0.07em;
+      }
+
+      .fact__text {
+        margin: 0;
+        font-size: clamp(16px, 1.3vw, 21px);
+        line-height: 1.45;
+      }
+
+      .gallery-sticky {
+        position: relative;
+      }
+
+      .gallery-scroll {
+        position: relative;
+        margin-top: clamp(54px, 8vw, 110px);
+        margin-left: calc(var(--page-x) * -1);
+        margin-right: calc(var(--page-x) * -1);
+        padding-left: var(--page-x);
+        padding-right: var(--page-x);
+        overflow-x: visible;
+        overflow-y: visible;
+        overscroll-behavior-x: contain;
+        scrollbar-width: thin;
+        scrollbar-color: var(--blue) transparent;
+      }
+
+      .gallery-scroll::-webkit-scrollbar {
+        height: 2px;
+      }
+
+      .gallery-scroll::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .gallery-scroll::-webkit-scrollbar-thumb {
+        background: var(--blue);
+      }
+
+      .gallery-track {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        gap: clamp(22px, 4vw, 64px);
+        width: max-content;
+        padding: 0 var(--page-x) 34px 0;
+      }
+
+      .gallery-item {
+        flex: 0 0 auto;
+        width: min(72vw, 560px);
+      }
+
+      .gallery-item:nth-child(2n) {
+        padding-top: 96px;
+      }
+
+      .gallery-item:nth-child(3n) {
+        padding-top: 42px;
+      }
+
+      .gallery-item .image-placeholder {
+        min-height: clamp(320px, 42vw, 560px);
+      }
+
+      .gallery-caption {
+        margin: 18px 0 0;
+        max-width: 460px;
+        font-size: clamp(15px, 1.1vw, 18px);
+        line-height: 1.45;
+      }
+
+      .final {
+        min-height: auto;
+        display: grid;
+        align-items: center;
+        padding-bottom: clamp(42px, 6vw, 90px);
+      }
+
+      .final__title {
+        max-width: 1000px;
+      }
+
+      .final__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px 42px;
+        margin-top: clamp(46px, 7vw, 90px);
+      }
+
+      .final__meta span,
+      .final__meta a {
+        font-size: clamp(16px, 1.3vw, 20px);
+        line-height: 1.4;
+      }
+
+      .socials-block {
+        margin-top: clamp(28px, 4vw, 52px);
+      }
+
+      .socials-icons {
+        display: flex;
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .socials-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        color: var(--blue);
+        font-size: 14px;
+        line-height: 1;
+        box-shadow: 0 0 0 2px var(--blue) inset;
+      }
+
+      .back-to-top {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: clamp(34px, 5vw, 64px);
+        border: 0;
+        min-height: 44px;
+        padding: 12px 18px;
+        border-radius: 999px;
+        background: rgba(242, 241, 236, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 0 0 1px rgba(57, 96, 158, 0.18);
+        color: var(--blue);
+        cursor: pointer;
+        transition: transform 0.22s ease;
+      }
+
+      .back-to-top:hover {
+        transform: translateY(-2px);
+      }
+
+      .back-to-top__arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        flex: 0 0 18px;
+        font-size: 18px;
+        line-height: 1;
+      }
+
+      .back-to-top__text {
+        font-size: 14px;
+        line-height: 1;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(34px);
+        transition:
+          opacity 0.9s ease,
+          transform 0.9s ease;
+      }
+
+      .media-reveal {
+        opacity: 0;
+        transform: translateY(28px) scale(0.98);
+        transition:
+          opacity 1s ease,
+          transform 1s ease;
+      }
+
+      .media-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .content-row.reveal.is-visible {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .content-row.intro-split.reveal.is-visible {
+        margin: 0 auto 200px;
+      }
+
+      @media (min-width: 901px) {
+        .timeline-sticky,
+        .gallery-sticky {
+          height: var(--sticky-scroll-height, 360vh);
+          overflow: clip;
+        }
+
+        .timeline-sticky__inner,
+        .gallery-sticky__inner {
+          position: sticky;
+          top: 0;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          overflow: hidden;
+        }
+
+        .timeline-sticky__inner {
+          overflow: hidden;
+        }
+
+        .gallery-sticky__inner {
+          display: block;
+          padding-top: clamp(90px, 10vh, 130px);
+          overflow: hidden;
+        }
+      }
+
+      @media (min-width: 1600px) {
+        :root {
+          --page-x: clamp(90px, 7vw, 150px);
+          --wide-width: 1480px;
+          --section-gap: clamp(150px, 14vw, 260px);
+        }
+
+        .hero__grid {
+          grid-template-columns: minmax(0, 1fr) minmax(420px, 0.82fr);
+        }
+
+        .timeline-card {
+          width: clamp(320px, 22vw, 430px);
+        }
+
+        .gallery-item {
+          width: min(60vw, 640px);
+        }
+      }
+
+      @media (min-width: 1201px) and (max-width: 1599px) {
+        :root {
+          --page-x: clamp(64px, 6vw, 110px);
+          --wide-width: 1280px;
+        }
+
+        .hero__grid {
+          grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+        }
+      }
+
+      @media (max-width: 1200px) {
+        :root {
+          --page-x: clamp(42px, 5vw, 72px);
+          --wide-width: 1080px;
+          --section-gap: clamp(96px, 13vw, 170px);
+        }
+
+        .section-title {
+          font-size: clamp(46px, 8vw, 104px);
+        }
+
+        .section-title.small {
+          font-size: clamp(36px, 5.8vw, 72px);
+        }
+
+        .hero__title {
+          font-size: clamp(58px, 11vw, 136px);
+        }
+
+        .hero__year {
+          font-size: clamp(104px, 20vw, 250px);
+        }
+
+        .person__quote {
+          font-size: clamp(28px, 4.6vw, 54px);
+        }
+
+        .timeline-card {
+          width: clamp(250px, 28vw, 330px);
+        }
+      }
+
+      @media (max-width: 1100px) {
+        .side-nav {
+          left: 14px;
+        }
+
+        .page {
+          padding-left: max(var(--page-x), 54px);
+        }
+      }
+
+      @media (max-width: 1024px) {
+        :root {
+          --page-x: clamp(30px, 4.2vw, 46px);
+          --wide-width: 920px;
+        }
+
+        .person,
+        .person:nth-child(even) {
+          grid-template-columns: minmax(230px, 0.78fr) minmax(0, 1fr);
+          gap: clamp(28px, 5vw, 64px);
+        }
+
+        .person:nth-child(even) {
+          grid-template-columns: minmax(0, 1fr) minmax(230px, 0.78fr);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .content-row.intro-split.reveal.is-visible {
+          margin: 0 auto 100px;
+        }
+
+        :root {
+          --page-x: 24px;
+          --section-gap: 120px;
+        }
+
+        .page {
+          padding-left: var(--page-x);
+        }
+
+        .side-nav {
+          display: none;
+        }
+
+        .mobile-nav,
+        .mobile-menu-button,
+        .mobile-menu-panel {
+          display: flex;
+        }
+
+        .mobile-nav {
+          position: fixed;
+          left: 18px;
+          top: 18px;
+          z-index: 40;
+          max-width: calc(100vw - 130px);
+          color: var(--blue);
+          font-size: 13px;
+          line-height: 1.1;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        body.menu-open {
+          overflow: hidden;
+        }
+
+        .hero__grid,
+        .intro-split,
+        .person,
+        .person:nth-child(even),
+        .history__intro {
+          grid-template-columns: 1fr;
+        }
+
+        .person:nth-child(even) .person__media {
+          order: 0;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .hero__sticky {
+          position: relative;
+          min-height: auto;
+          padding-top: 72px;
+        }
+
+        .hero-photo-compare {
+          height: auto;
+          min-height: 340px;
+          aspect-ratio: 16 / 10;
+        }
+
+        .timeline-shell {
+          width: 100%;
+          height: auto;
+          min-height: 0;
+          margin-left: 0;
+          margin-right: 0;
+          padding-left: 0;
+          padding-right: 0;
+          overflow: visible;
+        }
+
+        .timeline-track {
+          display: grid;
+          width: auto;
+          height: auto;
+          min-height: 0;
+          gap: 86px;
+          padding: 0;
+          transform: none !important;
+        }
+
+        .timeline-line {
+          display: none;
+        }
+
+        .timeline-card {
+          width: 100%;
+          height: auto;
+          min-height: auto;
+          opacity: 1;
+          transform: none;
+          padding: 0 !important;
+        }
+
+        .timeline-card::before,
+        .timeline-card::after {
+          display: none;
+        }
+
+        .timeline-card .image-placeholder {
+          aspect-ratio: 1 / 1;
+          min-height: 0;
+        }
+
+        .timeline-card__body {
+          grid-template-columns: 1fr;
+        }
+
+        .facts-line {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-scroll {
+          margin-left: calc(var(--page-x) * -1);
+          margin-right: calc(var(--page-x) * -1);
+          padding-left: var(--page-x);
+          padding-right: 0;
+          overflow-x: auto;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+          scroll-snap-type: x mandatory;
+          touch-action: pan-x;
+        }
+
+        .gallery-sticky__inner {
+          overflow: hidden;
+        }
+
+        .gallery-track {
+          gap: 24px;
+          padding-right: var(--page-x);
+        }
+
+        .gallery-item {
+          width: min(82vw, 420px);
+          scroll-snap-align: start;
+        }
+
+        .gallery-item:nth-child(n) {
+          padding-top: 0;
+        }
+
+        .gallery-item .image-placeholder {
+          min-height: 320px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        :root {
+          --page-x: 22px;
+          --section-gap: 108px;
+          --radius-image: 20px;
+        }
+
+        .section-text {
+          font-size: clamp(17px, 2.7vw, 21px);
+        }
+
+        .names-list p {
+          font-size: clamp(28px, 7vw, 44px);
+        }
+
+        .person__name {
+          font-size: clamp(36px, 9vw, 58px);
+        }
+
+        .person__quote {
+          font-size: clamp(30px, 8vw, 48px);
+        }
+
+        .person__media .image-placeholder {
+          min-height: 320px;
+        }
+
+        .facts-line {
+          gap: 44px;
+        }
+
+        .fact__number {
+          font-size: clamp(72px, 18vw, 118px);
+        }
+      }
+
+      @media (max-width: 560px) {
+        :root {
+          --page-x: 18px;
+          --section-gap: 92px;
+          --radius-image: 18px;
+        }
+
+        .mobile-nav {
+          left: 12px;
+          top: 12px;
+          max-width: calc(100vw - 118px);
+          min-height: 34px;
+          padding: 9px 12px;
+          font-size: 11px;
+        }
+
+        .mobile-menu-button {
+          top: 12px;
+          right: 12px;
+          min-height: 34px;
+          padding: 9px 12px;
+        }
+
+        .mobile-menu-button__text {
+          font-size: 12px;
+        }
+
+        .hero__sticky {
+          padding-top: 82px;
+        }
+
+        .hero__title {
+          font-size: clamp(48px, 16vw, 78px);
+        }
+
+        .hero__year {
+          font-size: clamp(92px, 30vw, 132px);
+        }
+
+        .section-title {
+          font-size: clamp(42px, 13.5vw, 68px);
+        }
+
+        .section-title.small {
+          font-size: clamp(36px, 11vw, 54px);
+        }
+
+        .section-text {
+          font-size: 17px;
+          line-height: 1.48;
+        }
+
+        .hero-photo-compare {
+          min-height: 280px;
+          aspect-ratio: 4 / 3;
+        }
+
+        .names-list {
+          gap: 14px;
+        }
+
+        .person__media .image-placeholder,
+        .gallery-item .image-placeholder {
+          min-height: 280px;
+        }
+
+        .timeline-track {
+          gap: 68px;
+        }
+
+        .timeline-card__year {
+          font-size: clamp(76px, 22vw, 112px);
+        }
+
+        .timeline-card__title {
+          font-size: clamp(30px, 8vw, 42px);
+        }
+
+        .final__meta {
+          display: grid;
+          gap: 14px;
+        }
+      }
+
+      @media (max-width: 390px) {
+        :root {
+          --page-x: 14px;
+          --section-gap: 82px;
+        }
+
+        .hero__title {
+          font-size: clamp(43px, 15vw, 60px);
+        }
+
+        .hero__year {
+          font-size: clamp(82px, 29vw, 112px);
+        }
+
+        .section-title,
+        .section-title.small {
+          font-size: clamp(34px, 12vw, 48px);
+        }
+
+        .section-text {
+          font-size: 16px;
+        }
+
+        .mobile-menu-panel {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        .mobile-menu-panel__item {
+          font-size: clamp(31px, 10vw, 44px);
+        }
+
+        .gallery-item {
+          width: 84vw;
+        }
+      }
+    </style>
+  </head>
+  <body class="main-scrollbar is-loading">
+    <div
+      class="site-loader"
+      id="siteLoader"
+      role="status"
+      aria-live="polite"
+      aria-label="Загрузка сайта"
+    >
+      <p class="site-loader__year" id="loaderYear">2026</p>
+    </div>
+    <div class="mobile-nav" id="mobileCurrentSection">Главная</div>
+    <button
+      class="mobile-menu-button"
+      id="mobileMenuButton"
+      type="button"
+      aria-label="Открыть меню"
+      aria-expanded="false"
+    >
+      <span class="mobile-menu-button__text">Меню</span>
+      <span class="mobile-menu-button__icon"></span>
+    </button>
+    <div class="mobile-menu-panel" id="mobileMenuPanel" aria-hidden="true">
+      <div class="mobile-menu-panel__list">
+        <button
+          class="mobile-menu-panel__item is-active"
+          type="button"
+          data-target="hero"
+        >
+          Главная
+        </button>
+        <button
+          class="mobile-menu-panel__item"
+          type="button"
+          data-target="congrats"
+        >
+          Поздравления
+        </button>
+        <button
+          class="mobile-menu-panel__item"
+          type="button"
+          data-target="history"
+        >
+          История
+        </button>
+        <button
+          class="mobile-menu-panel__item"
+          type="button"
+          data-target="today"
+        >
+          Современность
+        </button>
+        <button
+          class="mobile-menu-panel__item"
+          type="button"
+          data-target="gallery"
+        >
+          Галерея
+        </button>
+        <button
+          class="mobile-menu-panel__item"
+          type="button"
+          data-target="final"
+        >
+          Финал
+        </button>
+      </div>
+    </div>
+
+    <nav class="side-nav" aria-label="Навигация по странице">
+      <button class="side-nav__item is-active" type="button" data-target="hero">
+        <span class="side-nav__line"></span
+        ><span class="side-nav__label">Главная</span>
+      </button>
+      <button class="side-nav__item" type="button" data-target="congrats">
+        <span class="side-nav__line"></span
+        ><span class="side-nav__label">Поздравления первых лиц</span>
+      </button>
+      <button class="side-nav__item" type="button" data-target="history">
+        <span class="side-nav__line"></span
+        ><span class="side-nav__label">История Министерства</span>
+      </button>
+      <button class="side-nav__item" type="button" data-target="today">
+        <span class="side-nav__line"></span
+        ><span class="side-nav__label">Современность</span>
+      </button>
+      <button class="side-nav__item" type="button" data-target="gallery">
+        <span class="side-nav__line"></span
+        ><span class="side-nav__label">Галерея</span>
+      </button>
+      <button class="side-nav__item" type="button" data-target="final">
+        <span class="side-nav__line"></span
+        ><span class="side-nav__label">Финал</span>
+      </button>
+    </nav>
+
+    <main class="page">
+      <section class="hero flow-anchor" id="hero" data-nav-title="Главная">
+        <div class="hero__sticky">
+          <div class="content-row hero__grid">
+            <div class="hero__content reveal">
+              <h1 class="hero__title section-title type-title">
+                <span class="hero__year">250</span>лет истории
+              </h1>
+              <p class="section-text hero__lead">
+                Празднуем юбилей и рассказываем о проектах, личностях,
+                исторических вехах и достижениях финансовой системы Тверской
+                области.
+              </p>
+            </div>
+            <div class="hero__figure reveal">
+              <div
+                class="hero-photo-compare media-reveal"
+                id="heroPhotoCompare"
+                style="--hero-photo-progress: 0"
+              >
+                <img
+                  class="hero-photo-compare__image hero-photo-compare__image--old"
+                  src="./assets/image/old.png"
+                  alt="Исторический вид здания Министерства финансов Тверской области"
+                />
+                <img
+                  class="hero-photo-compare__image hero-photo-compare__image--new"
+                  src="./assets/image/new.png"
+                  alt="Современный вид здания Министерства финансов Тверской области"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="congrats flow-anchor"
+        id="congrats"
+        data-nav-title="Поздравления первых лиц"
+      >
+        <div class="content-row intro-split reveal">
+          <div>
+            <h2 class="section-title small type-title">
+              Поздравления первых лиц
+            </h2>
+          </div>
+          <div class="names-list">
+            <p>Министерство финансов Тверской области поздравили</p>
+            <p>Губернатор Тверской области</p>
+            <p>Председатель Законодательного собрания Тверской области</p>
+            <p>Министр финансов Тверской области</p>
+          </div>
+        </div>
+
+        <div class="content-row quote-flow">
+          <article class="person reveal">
+            <div class="person__media">
+              <div class="image-placeholder media-image media-reveal">
+                Место для фото
+              </div>
+            </div>
+            <div class="person__content">
+              <h3 class="person__name">Королёв Виталий Геннадьевич</h3>
+              <p class="person__role">
+                Временно исполняющий обязанности Губернатора Тверской области
+              </p>
+              <p class="person__source">
+                Источник: Официальный сайт Правительства Тверской области
+              </p>
+              <blockquote class="person__quote">
+                «Это особая ответственность. Умение работать на долгосрочную
+                перспективу, способность увидеть за цифрами интересы региона и
+                его населения»
+              </blockquote>
+            </div>
+          </article>
+
+          <article class="person reveal">
+            <div class="person__media">
+              <div class="image-placeholder media-image media-reveal">
+                Место для фото
+              </div>
+            </div>
+            <div class="person__content">
+              <h3 class="person__name">Подтихова Марина Ивановна</h3>
+              <p class="person__role">
+                Заместитель Председателя Правительства Тверской области —
+                Министр финансов Тверской области
+              </p>
+              <p class="person__source">
+                Источник: Министерство финансов Тверской области
+              </p>
+              <blockquote class="person__quote">
+                «Текст, текст, текст. Здесь будет размещено поздравление после
+                согласования материалов»
+              </blockquote>
+            </div>
+          </article>
+
+          <article class="person reveal">
+            <div class="person__media">
+              <div class="image-placeholder media-image media-reveal">
+                Место для фото
+              </div>
+            </div>
+            <div class="person__content">
+              <h3 class="person__name">Сергей Анатольевич Голубев</h3>
+              <p class="person__role">
+                Председатель Законодательного собрания Тверской области
+              </p>
+              <blockquote class="person__quote">
+                «От взвешенности ваших решений, соблюдения финансовой дисциплины
+                напрямую зависит экономика, социальная стабильность,
+                безопасность и общая динамика развития территории»
+              </blockquote>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="history flow-anchor"
+        id="history"
+        data-nav-title="История Министерства"
+      >
+        <div class="content-row history__intro reveal">
+          <div>
+            <h2 class="section-title small type-title">История Министерства</h2>
+          </div>
+          <p class="section-text">
+            История начинается не с отчётов и цифр. А с подписи императрицы.
+            Дальше — почти два с половиной века решений, реформ и развития
+            финансовой системы региона.
+          </p>
+        </div>
+
+        <div class="timeline-sticky">
+          <div class="timeline-sticky__inner">
+            <div class="timeline-shell" id="timelineShell">
+              <div class="timeline-line" aria-hidden="true"></div>
+              <div class="timeline-track" id="timelineTrack">
+                <article class="timeline-card">
+                  <p class="timeline-card__year">1776</p>
+                  <h3 class="timeline-card__title">Тверская казённая палата</h3>
+                  <div class="timeline-card__body">
+                    <p class="timeline-card__text">
+                      28 января 1776 года Екатерина II утверждает указ об
+                      образовании Тверской казённой палаты. С этого момента в
+                      регионе появляется свой финансовый орган. Он следит за
+                      налогами, казёнными лесами, землями, соляной торговлей и
+                      строительством мостов.
+                    </p>
+                    <div class="image-placeholder media-image media-reveal">
+                      Место для фото
+                    </div>
+                  </div>
+                </article>
+
+                <article class="timeline-card">
+                  <p class="timeline-card__year">1917–1918</p>
+                  <h3 class="timeline-card__title">
+                    Революция, налоги, национализация
+                  </h3>
+                  <div class="timeline-card__body">
+                    <p class="timeline-card__text">
+                      Власть меняется. Вместе с ней — финансовая система.
+                      Создаётся Тверской губернский финансовый отдел, задача
+                      которого — подчинить советской власти казённую палату,
+                      казначейство и банковские структуры.
+                    </p>
+                    <div class="image-placeholder media-image media-reveal">
+                      Место для фото
+                    </div>
+                  </div>
+                </article>
+
+                <article class="timeline-card">
+                  <p class="timeline-card__year">1919</p>
+                  <h3 class="timeline-card__title">
+                    Новое положение о финансовых отделах
+                  </h3>
+                  <div class="timeline-card__body">
+                    <p class="timeline-card__text">
+                      29 сентября 1919 года утверждается новое положение о
+                      губернских и уездных финансовых отделах. Во главе
+                      губернского отдела стояли заведующий отделом и коллегия.
+                    </p>
+                    <div class="image-placeholder media-image media-reveal">
+                      Место для фото
+                    </div>
+                  </div>
+                </article>
+
+                <article class="timeline-card">
+                  <p class="timeline-card__year">1929</p>
+                  <h3 class="timeline-card__title">
+                    Новое территориальное деление
+                  </h3>
+                  <div class="timeline-card__body">
+                    <p class="timeline-card__text">
+                      В 1929 году губернский финотдел ликвидируют — страна
+                      переходит к новому территориальному делению. Но структура
+                      снова изменится уже в начале следующего десятилетия.
+                    </p>
+                    <div class="image-placeholder media-image media-reveal">
+                      Место для фото
+                    </div>
+                  </div>
+                </article>
+
+                <article class="timeline-card">
+                  <p class="timeline-card__year">1935</p>
+                  <h3 class="timeline-card__title">
+                    Образование Калининской области
+                  </h3>
+                  <div class="timeline-card__body">
+                    <p class="timeline-card__text">
+                      29 января 1935 года образована Калининская область. В
+                      составе оргкомитета ВЦИК появляется областной финансовый
+                      отдел. Задачи становятся масштабнее: промышленность, ЖКХ,
+                      дороги, образование, здравоохранение, культура.
+                    </p>
+                    <div class="image-placeholder media-image media-reveal">
+                      Место для фото
+                    </div>
+                  </div>
+                </article>
+
+                <article class="timeline-card">
+                  <p class="timeline-card__year">1982</p>
+                  <h3 class="timeline-card__title">
+                    Финансовое управление облисполкома
+                  </h3>
+                  <div class="timeline-card__body">
+                    <p class="timeline-card__text">
+                      Калининский областной финансовый отдел становится
+                      Финансовым управлением облисполкома. Это новая
+                      управленческая конфигурация для региональной финансовой
+                      системы.
+                    </p>
+                    <div class="image-placeholder media-image media-reveal">
+                      Место для фото
+                    </div>
+                  </div>
+                </article>
+
+                <article class="timeline-card">
+                  <p class="timeline-card__year">1990</p>
+                  <h3 class="timeline-card__title">
+                    Тверская область. Новое имя — новые вызовы
+                  </h3>
+                  <div class="timeline-card__body">
+                    <p class="timeline-card__text">
+                      Калининская область переименована в Тверскую область.
+                      Облисполком переименован в администрацию Тверской области.
+                    </p>
+                    <div class="image-placeholder media-image media-reveal">
+                      Место для фото
+                    </div>
+                  </div>
+                </article>
+
+                <article class="timeline-card">
+                  <p class="timeline-card__year">1998–2002</p>
+                  <h3 class="timeline-card__title">Департамент финансов</h3>
+                  <div class="timeline-card__body">
+                    <p class="timeline-card__text">
+                      Финансовое управление администрации Тверской области
+                      реорганизовано в Департамент финансов администрации
+                      Тверской области, затем переименовано в департамент
+                      финансов Тверской области.
+                    </p>
+                    <div class="image-placeholder media-image media-reveal">
+                      Место для фото
+                    </div>
+                  </div>
+                </article>
+
+                <article class="timeline-card">
+                  <p class="timeline-card__year">2004</p>
+                  <h3 class="timeline-card__title">
+                    Казначейское исполнение бюджетов
+                  </h3>
+                  <div class="timeline-card__body">
+                    <p class="timeline-card__text">
+                      Внедрена система казначейского исполнения бюджетов.
+                      Средства начинают расходоваться рациональнее, появляется
+                      предварительный контроль платежей.
+                    </p>
+                    <div class="image-placeholder media-image media-reveal">
+                      Место для фото
+                    </div>
+                  </div>
+                </article>
+
+                <article class="timeline-card">
+                  <p class="timeline-card__year">2011</p>
+                  <h3 class="timeline-card__title">
+                    Министерство финансов Тверской области
+                  </h3>
+                  <div class="timeline-card__body">
+                    <p class="timeline-card__text">
+                      Департамент финансов Тверской области переименован в
+                      Министерство финансов Тверской области. Начинается
+                      современный этап развития ведомства.
+                    </p>
+                    <div class="image-placeholder media-image media-reveal">
+                      Место для фото
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="today flow-anchor"
+        id="today"
+        data-nav-title="Современность"
+      >
+        <div class="content-row reveal">
+          <h2 class="section-title small type-title">
+            Современное Министерство
+          </h2>
+          <p class="section-text" style="margin-top: 36px">
+            Министерство финансов Тверской области продолжает развивать
+            финансово-бюджетную систему региона, обеспечивая устойчивость,
+            прозрачность и долгосрочную управленческую преемственность.
+          </p>
+          <div class="facts-line">
+            <div class="fact">
+              <p class="fact__number">250</p>
+              <p class="fact__text">
+                лет истории финансовых органов Тверской области
+              </p>
+            </div>
+            <div class="fact">
+              <p class="fact__number">1776</p>
+              <p class="fact__text">год основания Тверской казённой палаты</p>
+            </div>
+            <div class="fact">
+              <p class="fact__number">2011</p>
+              <p class="fact__text">
+                современный этап Министерства финансов Тверской области
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="gallery flow-anchor"
+        id="gallery"
+        data-nav-title="Галерея"
+      >
+        <div class="content-row reveal">
+          <h2 class="section-title small type-title">
+            Галерея документов и фотографий
+          </h2>
+          <div class="gallery-sticky" id="gallerySticky">
+            <div class="gallery-sticky__inner">
+              <div
+                class="gallery-scroll"
+                id="galleryScroll"
+                aria-label="Горизонтальная галерея документов и фотографий"
+              >
+                <div class="gallery-track">
+                  <article class="gallery-item">
+                    <div class="image-placeholder media-image media-reveal">
+                      Место для архивного документа
+                    </div>
+                    <p class="gallery-caption">
+                      Архивный документ финансовых органов Тверской области
+                    </p>
+                  </article>
+                  <article class="gallery-item">
+                    <div class="image-placeholder media-image media-reveal">
+                      Место для фотографии
+                    </div>
+                    <p class="gallery-caption">
+                      Историческая фотография или материал из архива
+                    </p>
+                  </article>
+                  <article class="gallery-item">
+                    <div class="image-placeholder media-image media-reveal">
+                      Место для материала
+                    </div>
+                    <p class="gallery-caption">
+                      Документ, связанный с развитием финансовой системы региона
+                    </p>
+                  </article>
+                  <article class="gallery-item">
+                    <div class="image-placeholder media-image media-reveal">
+                      Место для фотографии
+                    </div>
+                    <p class="gallery-caption">
+                      Фотография здания, события или сотрудника ведомства
+                    </p>
+                  </article>
+                  <article class="gallery-item">
+                    <div class="image-placeholder media-image media-reveal">
+                      Место для документа
+                    </div>
+                    <p class="gallery-caption">
+                      Материал для юбилейной цифровой экспозиции
+                    </p>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="final flow-anchor" id="final" data-nav-title="Финал">
+        <div class="content-row reveal">
+          <h2 class="section-title final__title type-title">
+            250 лет финансовой истории Тверской области
+          </h2>
+          <div class="final__meta">
+            <a
+              href="https://www.tverfin.ru/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Министерство финансов Тверской области</a
+            >
+            <span>2026</span>
+            <span
+              >170100, г. Тверь, площадь Святого Благоверного Князя Михаила
+              Тверского, д. 5</span
+            >
+          </div>
+          <div class="socials-block">
+            <p class="section-text small">Министерство финансов в соцсетях</p>
+            <div class="socials-icons">
+              <a href="#" aria-label="ВКонтакте">VK</a>
+              <a href="#" aria-label="Одноклассники">OK</a>
+            </div>
+          </div>
+
+          <button
+            class="back-to-top"
+            id="backToTop"
+            type="button"
+            aria-label="Вернуться в начало страницы"
+          >
+            <span class="back-to-top__arrow">&#8593;</span>
+            <span class="back-to-top__text">В начало</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const siteLoader = document.getElementById("siteLoader");
+      const loaderYear = document.getElementById("loaderYear");
+      const navButtons = Array.from(
+        document.querySelectorAll(".side-nav__item"),
+      );
+      const mobileMenuButton = document.getElementById("mobileMenuButton");
+      const mobileMenuPanel = document.getElementById("mobileMenuPanel");
+      const mobileCurrentSection = document.getElementById(
+        "mobileCurrentSection",
+      );
+      const mobileMenuItems = Array.from(
+        document.querySelectorAll(".mobile-menu-panel__item"),
+      );
+      const anchors = Array.from(document.querySelectorAll(".flow-anchor"));
+      const heroSection = document.getElementById("hero");
+      const heroPhotoCompare = document.getElementById("heroPhotoCompare");
+      const revealItems = Array.from(
+        document.querySelectorAll(".reveal, .media-reveal"),
+      );
+      const typeTitles = Array.from(document.querySelectorAll(".type-title"));
+      const timelineTrack = document.getElementById("timelineTrack");
+      const timelineSticky = document.querySelector(".timeline-sticky");
+      const timelineShell = document.getElementById("timelineShell");
+      const galleryScroll = document.getElementById("galleryScroll");
+      const gallerySticky = document.getElementById("gallerySticky");
+      const backToTop = document.getElementById("backToTop");
+      const sideNav = document.querySelector(".side-nav");
+
+      function runSiteLoader() {
+        if (!siteLoader || !loaderYear) return;
+
+        const fromYear = 2026;
+        const toYear = 1776;
+        const duration = 4200;
+        const appearDelay = 120;
+        const holdDelay = 700;
+        const fadeDelay = 720;
+
+        loaderYear.textContent = fromYear;
+
+        setTimeout(() => {
+          loaderYear.classList.add("is-visible");
+        }, appearDelay);
+
+        setTimeout(() => {
+          const start = performance.now();
+
+          const tick = (now) => {
+            const progress = Math.min(1, (now - start) / duration);
+            const eased = progress * progress;
+            const year = Math.round(fromYear - (fromYear - toYear) * eased);
+
+            loaderYear.textContent = year;
+
+            if (progress < 1) {
+              requestAnimationFrame(tick);
+            } else {
+              loaderYear.textContent = toYear;
+              setTimeout(() => {
+                loaderYear.classList.add("is-fading");
+                setTimeout(() => {
+                  siteLoader.classList.add("is-hidden");
+                  document.body.classList.remove("is-loading");
+                }, fadeDelay);
+              }, holdDelay);
+            }
+          };
+
+          requestAnimationFrame(tick);
+        }, 1400);
+      }
+
+      function scrollToSection(id) {
+        const target = document.getElementById(id);
+        if (!target) return;
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function setMobileMenuState(isOpen) {
+        if (!mobileMenuButton || !mobileMenuPanel) return;
+        mobileMenuButton.classList.toggle("is-open", isOpen);
+        mobileMenuPanel.classList.toggle("is-open", isOpen);
+        mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
+        mobileMenuPanel.setAttribute("aria-hidden", String(!isOpen));
+        document.body.classList.toggle("menu-open", isOpen);
+      }
+
+      navButtons.forEach((button) => {
+        button.addEventListener("click", () =>
+          scrollToSection(button.dataset.target),
+        );
+      });
+
+      mobileMenuItems.forEach((button) => {
+        button.addEventListener("click", () => {
+          setMobileMenuState(false);
+          scrollToSection(button.dataset.target);
+        });
+      });
+
+      if (mobileMenuButton) {
+        mobileMenuButton.addEventListener("click", () => {
+          setMobileMenuState(!mobileMenuButton.classList.contains("is-open"));
+        });
+      }
+
+      function setActiveNav(id) {
+        navButtons.forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.target === id);
+        });
+
+        mobileMenuItems.forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.target === id);
+        });
+
+        const activeAnchor = document.getElementById(id);
+        if (mobileCurrentSection && activeAnchor) {
+          mobileCurrentSection.textContent =
+            activeAnchor.dataset.navTitle || id;
+        }
+      }
+
+      function updateActiveNav() {
+        const scrollPosition = window.scrollY;
+        const viewportPoint = scrollPosition + window.innerHeight * 0.42;
+        let currentId = anchors[0] ? anchors[0].id : "";
+
+        anchors.forEach((anchor) => {
+          if (anchor.offsetTop <= viewportPoint) {
+            currentId = anchor.id;
+          }
+        });
+
+        if (currentId) setActiveNav(currentId);
+      }
+
+      function typeTitle(title) {
+        if (title.dataset.typed === "true") return;
+        title.dataset.typed = "true";
+        const originalHtml = title.innerHTML;
+        const text = title.textContent.trim();
+        title.innerHTML = "";
+        title.classList.add("is-typed");
+
+        const caret = document.createElement("span");
+        caret.className = "type-caret";
+        let index = 0;
+
+        const tick = () => {
+          title.textContent = text.slice(0, index);
+          title.appendChild(caret);
+          index += 1;
+
+          if (index <= text.length) {
+            setTimeout(tick, 28);
+          } else {
+            setTimeout(() => {
+              caret.remove();
+              title.innerHTML = originalHtml;
+              title.classList.add("is-typed");
+            }, 420);
+          }
+        };
+
+        tick();
+      }
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.14 },
+      );
+
+      const typeObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              typeTitle(entry.target);
+              typeObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+
+      const timelineObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              timelineObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.25 },
+      );
+
+      revealItems.forEach((item) => revealObserver.observe(item));
+      typeTitles.forEach((item) => typeObserver.observe(item));
+      if (timelineShell) timelineObserver.observe(timelineShell);
+
+      function getStickyProgress(stickyElement) {
+        const rect = stickyElement.getBoundingClientRect();
+        const total = stickyElement.offsetHeight - window.innerHeight;
+        if (total <= 0) return 0;
+        return Math.min(1, Math.max(0, -rect.top / total));
+      }
+
+      function setupStickyScene(stickyElement, trackElement, extraOffset = 0) {
+        if (!stickyElement || !trackElement || window.innerWidth <= 900) {
+          if (trackElement) trackElement.style.transform = "none";
+          return;
+        }
+
+        const viewportWidth =
+          stickyElement.querySelector(".timeline-shell, .gallery-scroll")
+            ?.clientWidth || window.innerWidth;
+        const scrollable = Math.max(
+          0,
+          trackElement.scrollWidth - viewportWidth + extraOffset,
+        );
+        const sceneHeight = Math.max(
+          window.innerHeight * 1.8,
+          scrollable + window.innerHeight,
+        );
+        stickyElement.style.setProperty(
+          "--sticky-scroll-height",
+          `${sceneHeight}px`,
+        );
+
+        const progress = getStickyProgress(stickyElement);
+        trackElement.style.transform = `translate3d(${-scrollable * progress}px, 0, 0)`;
+      }
+
+      function updateTimeline() {
+        setupStickyScene(
+          timelineSticky,
+          timelineTrack,
+          window.innerWidth * 0.18,
+        );
+      }
+
+      function updateGallerySticky() {
+        const galleryTrack = galleryScroll
+          ? galleryScroll.querySelector(".gallery-track")
+          : null;
+        setupStickyScene(gallerySticky, galleryTrack, window.innerWidth * 0.12);
+      }
+
+      function updateHeroPhotoCompare() {
+        if (!heroSection || !heroPhotoCompare) return;
+
+        if (window.innerWidth <= 900) {
+          heroPhotoCompare.style.setProperty("--hero-photo-progress", "1");
+          return;
+        }
+
+        const rect = heroSection.getBoundingClientRect();
+        const total = Math.max(
+          1,
+          heroSection.offsetHeight - window.innerHeight,
+        );
+        const progress = Math.min(1, Math.max(0, -rect.top / total));
+        const eased = Math.pow(progress, 1.35);
+
+        heroPhotoCompare.style.setProperty(
+          "--hero-photo-progress",
+          eased.toFixed(3),
+        );
+      }
+
+      function updateStickyScenes() {
+        updateHeroPhotoCompare();
+        updateTimeline();
+        updateGallerySticky();
+      }
+
+      let sideNavIdleTimer = null;
+
+      function showSideNav() {
+        if (!sideNav || window.innerWidth <= 900) return;
+
+        sideNav.classList.remove("is-idle");
+
+        clearTimeout(sideNavIdleTimer);
+
+        sideNavIdleTimer = setTimeout(() => {
+          if (!sideNav.matches(":hover")) {
+            sideNav.classList.add("is-idle");
+          }
+        }, 2000);
+      }
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          updateStickyScenes();
+          updateActiveNav();
+          updateBackToTopVisibility();
+          showSideNav();
+        },
+        { passive: true },
+      );
+
+      window.addEventListener("resize", () => {
+        updateStickyScenes();
+        updateActiveNav();
+        updateBackToTopVisibility();
+        showSideNav();
+      });
+
+      function updateBackToTopVisibility() {
+        if (!backToTop) return;
+
+        if (window.innerWidth > 560) {
+          backToTop.classList.add("is-visible");
+          return;
+        }
+
+        const showPoint =
+          document.documentElement.scrollHeight * 0.5 - window.innerHeight;
+        const isVisible = window.scrollY >= showPoint;
+
+        backToTop.classList.toggle("is-visible", isVisible);
+      }
+
+      if (backToTop) {
+        backToTop.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+
+      updateStickyScenes();
+      updateActiveNav();
+      updateBackToTopVisibility();
+      showSideNav();
+      runSiteLoader();
+    </script>
+  </body>
+</html>
