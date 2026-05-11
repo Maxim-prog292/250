@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" class="is-loading-scrollbar-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,6 +33,15 @@
         scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
       }
 
+      html.is-loading-scrollbar-hidden {
+        scrollbar-width: none;
+      }
+
+      html.is-loading-scrollbar-hidden::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+
       html::-webkit-scrollbar {
         width: var(--scrollbar-size);
         height: var(--scrollbar-size);
@@ -56,22 +65,12 @@
       }
 
       body {
+        position: relative;
         margin: 0;
         background: var(--bg);
         color: var(--blue);
         font-family: var(--font-main);
         overflow-x: clip;
-      }
-
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: 9999;
-        pointer-events: none;
-        opacity: 0.055;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-        mix-blend-mode: multiply;
       }
 
       a {
@@ -115,6 +114,7 @@
 
       .section-title {
         margin: 0;
+        min-height: 0.92em;
         color: var(--blue);
         font-family: var(--font-serif);
         font-size: clamp(48px, 8.5vw, 132px);
@@ -213,6 +213,42 @@
           visibility 0.65s ease;
       }
 
+      .site-loader::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.045;
+        background-image:
+          linear-gradient(90deg, rgba(57, 96, 158, 0.3) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(57, 96, 158, 0.24) 1px, transparent 1px);
+        background-size: clamp(82px, 9vw, 150px) clamp(82px, 9vw, 150px);
+        pointer-events: none;
+      }
+
+      .site-loader::after {
+        content: "250";
+        position: absolute;
+        right: -0.16em;
+        bottom: -0.24em;
+        font-family: var(--font-serif);
+        font-size: clamp(220px, 38vw, 620px);
+        font-style: italic;
+        line-height: 0.72;
+        letter-spacing: -0.09em;
+        color: var(--blue);
+        opacity: 0.035;
+        pointer-events: none;
+      }
+
+      .site-loader__inner {
+        position: relative;
+        z-index: 2;
+        width: min(100%, 1040px);
+        display: grid;
+        justify-items: center;
+        gap: clamp(20px, 3.2vw, 38px);
+      }
+
       .site-loader.is-hidden {
         opacity: 0;
         visibility: hidden;
@@ -221,6 +257,7 @@
 
       .site-loader__year {
         margin: 0;
+        min-height: 0.72em;
         font-family: var(--font-serif);
         font-size: clamp(96px, 28vw, 420px);
         font-weight: 400;
@@ -242,6 +279,133 @@
       .site-loader__year.is-fading {
         opacity: 0;
         transform: translateY(-12px) scale(0.985);
+      }
+
+      .site-loader__eyebrow {
+        margin: 0;
+        font-size: clamp(12px, 1.1vw, 16px);
+        line-height: 1;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        opacity: 0;
+        transform: translateY(10px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+
+      .site-loader__mobile-step {
+        display: none;
+        margin: 0;
+        font-family: var(--font-serif);
+        font-size: 22px;
+        font-style: italic;
+        line-height: 1;
+        letter-spacing: -0.045em;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(8px);
+        transition:
+          opacity 0.45s ease,
+          transform 0.45s ease;
+      }
+
+      .site-loader__mobile-step.is-active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .site-loader__timeline {
+        width: min(100%, 760px);
+        margin-top: 100px;
+        opacity: 0;
+        transform: translateY(12px);
+        transition:
+          opacity 0.75s ease,
+          transform 0.75s ease;
+      }
+
+      .site-loader__line {
+        position: relative;
+        width: 100%;
+        height: 2px;
+        background: rgba(57, 96, 158, 0.18);
+        overflow: hidden;
+      }
+
+      .site-loader__line-fill {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: calc(var(--loader-progress, 0) * 100%);
+        background: var(--blue);
+        transform-origin: left center;
+        transition: width 0.08s linear;
+      }
+
+      .site-loader__milestones {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .site-loader__milestone {
+        position: relative;
+        display: grid;
+        gap: 5px;
+        opacity: 0.32;
+        transform: translateY(6px);
+        transition:
+          opacity 0.35s ease,
+          transform 0.35s ease;
+      }
+
+      .site-loader__milestone::before {
+        content: "";
+        position: absolute;
+        top: -22px;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--bg);
+        box-shadow: 0 0 0 2px rgba(57, 96, 158, 0.34);
+      }
+
+      .site-loader__milestone.is-active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .site-loader__milestone.is-active::before {
+        background: var(--blue);
+        box-shadow:
+          0 0 0 4px var(--bg),
+          0 0 0 6px var(--blue);
+      }
+
+      .site-loader__milestone-year {
+        font-family: var(--font-serif);
+        font-size: clamp(20px, 2vw, 34px);
+        font-style: italic;
+        line-height: 0.9;
+        letter-spacing: -0.055em;
+      }
+
+      .site-loader__milestone-text {
+        max-width: 140px;
+        font-size: clamp(11px, 0.9vw, 13px);
+        line-height: 1.25;
+      }
+
+      .site-loader.is-running .site-loader__eyebrow,
+      .site-loader.is-running .site-loader__timeline {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .site-loader.is-complete .site-loader__year {
+        transform: translateY(0) scale(1.035);
       }
 
       body.is-loading {
@@ -535,6 +699,7 @@
       .hero-photo-compare {
         position: relative;
         width: 100%;
+        aspect-ratio: 16 / 10;
         height: clamp(320px, 48vw, 640px);
         overflow: hidden;
         border-radius: var(--radius-image);
@@ -863,6 +1028,7 @@
 
       .fact__number {
         margin: 0 0 12px;
+        font-variant-numeric: tabular-nums;
         font-family: var(--font-serif);
         font-size: clamp(62px, 10vw, 150px);
         line-height: 0.85;
@@ -886,15 +1052,15 @@
         margin-right: calc(var(--page-x) * -1);
         padding-left: var(--page-x);
         padding-right: var(--page-x);
-        overflow-x: visible;
-        overflow-y: visible;
+        overflow-x: auto;
+        overflow-y: hidden;
         overscroll-behavior-x: contain;
         scrollbar-width: thin;
-        scrollbar-color: var(--blue) transparent;
+        scrollbar-color: rgba(57, 96, 158, 0.55) transparent;
       }
 
       .gallery-scroll::-webkit-scrollbar {
-        height: 2px;
+        height: 6px;
       }
 
       .gallery-scroll::-webkit-scrollbar-track {
@@ -902,7 +1068,12 @@
       }
 
       .gallery-scroll::-webkit-scrollbar-thumb {
-        background: var(--blue);
+        background: rgba(57, 96, 158, 0.55);
+        border-radius: 999px;
+      }
+
+      .gallery-scroll::-webkit-scrollbar-thumb:hover {
+        background: rgba(57, 96, 158, 0.8);
       }
 
       .gallery-track {
@@ -1027,18 +1198,18 @@
 
       .reveal {
         opacity: 0;
-        transform: translateY(34px);
+        transform: translateY(42px);
         transition:
-          opacity 0.9s ease,
-          transform 0.9s ease;
+          opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .media-reveal {
         opacity: 0;
-        transform: translateY(28px) scale(0.98);
+        transform: translateY(34px) scale(0.985);
         transition:
-          opacity 1s ease,
-          transform 1s ease;
+          opacity 1.15s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1.15s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .media-reveal.is-visible {
@@ -1060,11 +1231,277 @@
         margin: 0 auto 200px;
       }
 
+      /* WOW layer: museum-scale decorative system */
+      .wow-ambient {
+        position: absolute;
+        inset: 0 0 auto 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: visible;
+        min-height: 100%;
+      }
+
+      .wow-ambient::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.028;
+        background-image:
+          linear-gradient(90deg, rgba(57, 96, 158, 0.28) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(57, 96, 158, 0.22) 1px, transparent 1px);
+        background-size: clamp(110px, 10vw, 170px) clamp(110px, 10vw, 170px);
+        mask-image: linear-gradient(
+          to bottom,
+          transparent,
+          #000 14%,
+          #000 86%,
+          transparent
+        );
+      }
+
+      .wow-ambient::after {
+        display: none;
+      }
+
+      .wow-epoch {
+        position: absolute;
+        z-index: 0;
+        font-family: var(--font-serif);
+        font-size: clamp(160px, 28vw, 520px);
+        font-style: italic;
+        line-height: 0.72;
+        letter-spacing: -0.09em;
+        color: var(--blue);
+        opacity: 0.04;
+        user-select: none;
+        white-space: nowrap;
+        transform: translate3d(0, var(--wow-parallax, 0px), 0)
+          rotate(var(--wow-rotate, 0deg));
+        will-change: transform;
+      }
+
+      .wow-epoch--hero {
+        top: 9vh;
+        right: -7vw;
+      }
+
+      .wow-epoch--history {
+        top: 165vh;
+        left: -10vw;
+      }
+
+      .wow-epoch--today {
+        top: 335vh;
+        right: -9vw;
+      }
+
+      .wow-epoch--final {
+        top: 520vh;
+        left: -7vw;
+      }
+
+      .wow-epoch--archive {
+        top: 95vh;
+        right: -12vw;
+        opacity: 0.028;
+        --wow-rotate: -8deg;
+      }
+
+      .wow-arch-lines {
+        position: absolute;
+        inset: 0;
+        opacity: 0.08;
+        background-image:
+          linear-gradient(
+            90deg,
+            transparent calc(50% - 1px),
+            rgba(57, 96, 158, 0.22) 50%,
+            transparent calc(50% + 1px)
+          ),
+          linear-gradient(
+            90deg,
+            transparent calc(25% - 1px),
+            rgba(57, 96, 158, 0.1) 25%,
+            transparent calc(25% + 1px)
+          ),
+          linear-gradient(
+            90deg,
+            transparent calc(75% - 1px),
+            rgba(57, 96, 158, 0.1) 75%,
+            transparent calc(75% + 1px)
+          );
+      }
+
+      .wow-dust {
+        display: none;
+      }
+
+      .page {
+        position: relative;
+        z-index: 1;
+      }
+
+      .side-nav {
+        position: fixed;
+        z-index: 500;
+      }
+
+      .mobile-nav {
+        z-index: 40;
+      }
+
+      .mobile-menu-button {
+        z-index: 60;
+      }
+
+      .mobile-menu-panel {
+        z-index: 50;
+      }
+
+      .hero-photo-compare,
+      .person__photo,
+      .gallery-item .image-placeholder,
+      .timeline-card .image-placeholder {
+        position: relative;
+        overflow: hidden;
+        box-shadow:
+          0 12px 32px rgba(57, 96, 158, 0.08),
+          0 0 0 1px rgba(57, 96, 158, 0.12);
+      }
+
+      .hero-photo-compare::before,
+      .person__media::before,
+      .gallery-item .image-placeholder::before,
+      .timeline-card .image-placeholder::before {
+        content: "";
+        position: absolute;
+        inset: -42%;
+        z-index: 4;
+        pointer-events: none;
+        opacity: 0.26;
+        background: linear-gradient(
+          115deg,
+          transparent 38%,
+          rgba(255, 255, 255, 0.34) 49%,
+          transparent 60%
+        );
+        transform: translate3d(-30%, -8%, 0);
+        transition:
+          opacity 0.7s ease,
+          transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .person__media {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-image);
+      }
+
+      .hero-photo-compare:hover::before,
+      .person__media:hover::before,
+      .gallery-item:hover .image-placeholder::before,
+      .timeline-card:hover .image-placeholder::before {
+        opacity: 0.48;
+        transform: translate3d(24%, 2%, 0);
+      }
+
+      .hero-photo-compare__image {
+        transform-origin: center;
+      }
+
+      .hero-photo-compare__image--new {
+        transform: scale(calc(1.025 - var(--hero-photo-progress, 0) * 0.015));
+      }
+
+      .hero__sticky::after,
+      .final::after {
+        display: none;
+      }
+
+      .timeline-shell::before,
+      .timeline-shell::after {
+        display: none;
+      }
+
+      .timeline-card__year {
+        text-shadow: none;
+      }
+
+      .timeline-card::before {
+        transition: none;
+      }
+
+      .media-reveal {
+        clip-path: none;
+      }
+
+      .media-reveal.is-visible {
+        clip-path: none;
+      }
+
+      .gallery-item {
+        transition: transform 0.35s ease;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-6px);
+      }
+
+      .fact {
+        position: relative;
+      }
+
+      .fact::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -18px;
+        width: 42px;
+        height: 2px;
+        background: var(--blue);
+        opacity: 0.35;
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .reveal.is-visible .fact::before {
+        transform: scaleX(1);
+      }
+
+      .final {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .final::before {
+        content: "250";
+        position: absolute;
+        right: -0.14em;
+        bottom: -0.22em;
+        z-index: -1;
+        font-family: var(--font-serif);
+        font-size: clamp(190px, 34vw, 560px);
+        font-style: italic;
+        line-height: 0.72;
+        letter-spacing: -0.09em;
+        color: var(--blue);
+        opacity: 0.045;
+        pointer-events: none;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
       @media (min-width: 901px) {
         .timeline-sticky,
         .gallery-sticky {
           height: var(--sticky-scroll-height, 360vh);
-          overflow: clip;
+          overflow: visible;
         }
 
         .timeline-sticky__inner,
@@ -1074,17 +1511,28 @@
           height: 100vh;
           display: flex;
           align-items: center;
-          overflow: hidden;
+          overflow: visible;
         }
 
         .timeline-sticky__inner {
-          overflow: hidden;
+          overflow: visible;
         }
 
         .gallery-sticky__inner {
           display: block;
           padding-top: clamp(90px, 10vh, 130px);
-          overflow: hidden;
+          overflow: visible;
+        }
+
+        .gallery-scroll {
+          overflow-x: visible;
+          overflow-y: visible;
+          scrollbar-width: none;
+        }
+
+        .gallery-scroll::-webkit-scrollbar {
+          width: 0;
+          height: 0;
         }
       }
 
@@ -1370,6 +1818,110 @@
         }
       }
 
+      @media (max-width: 700px) {
+        .site-loader {
+          padding: 28px 18px;
+          place-items: center;
+        }
+
+        .site-loader::before {
+          opacity: 0.032;
+          background-size: 86px 86px;
+        }
+
+        .site-loader::after {
+          right: -0.44em;
+          bottom: 4vh;
+          font-size: clamp(230px, 88vw, 460px);
+          opacity: 0.028;
+        }
+
+        .site-loader__inner {
+          width: min(100%, 360px);
+          align-content: center;
+          gap: 18px;
+          min-height: min(680px, 86dvh);
+        }
+
+        .site-loader__eyebrow {
+          max-width: 260px;
+          font-size: 10px;
+          line-height: 1.35;
+          letter-spacing: 0.22em;
+          text-align: center;
+        }
+
+        .site-loader__year {
+          font-size: clamp(104px, 34vw, 158px);
+          line-height: 0.74;
+          letter-spacing: -0.085em;
+        }
+
+        .site-loader__timeline {
+          width: min(100%, 300px);
+          margin-top: 2px;
+        }
+
+        .site-loader__line {
+          height: 3px;
+          border-radius: 999px;
+          background: rgba(57, 96, 158, 0.16);
+        }
+
+        .site-loader__line-fill {
+          border-radius: 999px;
+        }
+
+        .site-loader__milestones {
+          display: flex;
+          justify-content: space-between;
+          gap: 0;
+          margin-top: 11px;
+        }
+
+        .site-loader__milestone {
+          display: block;
+          width: auto;
+          min-width: 0;
+          transform: none;
+          opacity: 0.3;
+        }
+
+        .site-loader__milestone::before {
+          display: none;
+        }
+
+        .site-loader__milestone-year {
+          display: block;
+          font-family: var(--font-main);
+          font-size: 10px;
+          font-style: normal;
+          line-height: 1;
+          letter-spacing: 0.08em;
+        }
+
+        .site-loader__milestone-text {
+          display: none;
+        }
+
+        .site-loader__milestone.is-active {
+          opacity: 1;
+        }
+
+        .site-loader__mobile-step {
+          display: block;
+        }
+
+        .site-loader.is-running .site-loader__mobile-step {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .site-loader__timeline {
+          margin-top: 72px;
+        }
+      }
+
       @media (max-width: 560px) {
         :root {
           --page-x: 18px;
@@ -1490,9 +2042,34 @@
           width: 84vw;
         }
       }
+
+      @media (max-width: 900px) {
+        .wow-ambient {
+          display: none;
+        }
+
+        .timeline-card:not(.is-focus) {
+          opacity: 1;
+        }
+
+        .timeline-card.is-focus {
+          transform: none;
+          filter: none;
+        }
+      }
     </style>
   </head>
   <body class="main-scrollbar is-loading">
+    <div class="wow-ambient" aria-hidden="true">
+      <div class="wow-epoch wow-epoch--hero" data-depth="0.18">250</div>
+      <div class="wow-epoch wow-epoch--history" data-depth="0.28">1776</div>
+      <div class="wow-epoch wow-epoch--today" data-depth="0.22">2011</div>
+      <div class="wow-epoch wow-epoch--archive" data-depth="0.12">1776</div>
+      <div class="wow-epoch wow-epoch--final" data-depth="0.16">2026</div>
+      <div class="wow-arch-lines"></div>
+      <div class="wow-dust wow-dust--one"></div>
+      <div class="wow-dust wow-dust--two"></div>
+    </div>
     <div
       class="site-loader"
       id="siteLoader"
@@ -1500,7 +2077,40 @@
       aria-live="polite"
       aria-label="Загрузка сайта"
     >
-      <p class="site-loader__year" id="loaderYear">2026</p>
+      <div class="site-loader__inner">
+        <p class="site-loader__eyebrow">История финансовой системы</p>
+        <p class="site-loader__year" id="loaderYear">1776</p>
+        <div class="site-loader__timeline" aria-hidden="true">
+          <div class="site-loader__line">
+            <span class="site-loader__line-fill" id="loaderLineFill"></span>
+          </div>
+          <div class="site-loader__milestones">
+            <div class="site-loader__milestone" data-year="1776">
+              <span class="site-loader__milestone-year">1776</span>
+              <span class="site-loader__milestone-text">Казённая палата</span>
+            </div>
+            <div class="site-loader__milestone" data-year="1935">
+              <span class="site-loader__milestone-year">1935</span>
+              <span class="site-loader__milestone-text"
+                >Калининская область</span
+              >
+            </div>
+            <div class="site-loader__milestone" data-year="2011">
+              <span class="site-loader__milestone-year">2011</span>
+              <span class="site-loader__milestone-text"
+                >Министерство финансов</span
+              >
+            </div>
+            <div class="site-loader__milestone" data-year="2026">
+              <span class="site-loader__milestone-year">2026</span>
+              <span class="site-loader__milestone-text">250 лет истории</span>
+            </div>
+          </div>
+        </div>
+        <p class="site-loader__mobile-step" id="loaderMobileStep">
+          Казённая палата
+        </p>
+      </div>
     </div>
     <div class="mobile-nav" id="mobileCurrentSection">Главная</div>
     <button
@@ -1588,7 +2198,12 @@
     </nav>
 
     <main class="page">
-      <section class="hero flow-anchor" id="hero" data-nav-title="Главная">
+      <section
+        class="hero flow-anchor wow-section"
+        id="hero"
+        data-nav-title="Главная"
+        data-epoch="250"
+      >
         <div class="hero__sticky">
           <div class="content-row hero__grid">
             <div class="hero__content reveal">
@@ -1624,9 +2239,10 @@
       </section>
 
       <section
-        class="congrats flow-anchor"
+        class="congrats flow-anchor wow-section"
         id="congrats"
         data-nav-title="Поздравления первых лиц"
+        data-epoch="2026"
       >
         <div class="content-row intro-split reveal">
           <div>
@@ -1715,9 +2331,10 @@
       </section>
 
       <section
-        class="history flow-anchor"
+        class="history flow-anchor wow-section"
         id="history"
         data-nav-title="История Министерства"
+        data-epoch="1776"
       >
         <div class="content-row history__intro reveal">
           <div>
@@ -1912,9 +2529,10 @@
       </section>
 
       <section
-        class="today flow-anchor"
+        class="today flow-anchor wow-section"
         id="today"
         data-nav-title="Современность"
+        data-epoch="2011"
       >
         <div class="content-row reveal">
           <h2 class="section-title small type-title">
@@ -1947,9 +2565,10 @@
       </section>
 
       <section
-        class="gallery flow-anchor"
+        class="gallery flow-anchor wow-section"
         id="gallery"
         data-nav-title="Галерея"
+        data-epoch="1917"
       >
         <div class="content-row reveal">
           <h2 class="section-title small type-title">
@@ -2010,7 +2629,12 @@
         </div>
       </section>
 
-      <section class="final flow-anchor" id="final" data-nav-title="Финал">
+      <section
+        class="final flow-anchor wow-section"
+        id="final"
+        data-nav-title="Финал"
+        data-epoch="250"
+      >
         <div class="content-row reveal">
           <h2 class="section-title final__title type-title">
             250 лет финансовой истории Тверской области
@@ -2052,6 +2676,11 @@
     <script>
       const siteLoader = document.getElementById("siteLoader");
       const loaderYear = document.getElementById("loaderYear");
+      const loaderLineFill = document.getElementById("loaderLineFill");
+      const loaderMobileStep = document.getElementById("loaderMobileStep");
+      const loaderMilestones = Array.from(
+        document.querySelectorAll(".site-loader__milestone"),
+      );
       const navButtons = Array.from(
         document.querySelectorAll(".side-nav__item"),
       );
@@ -2077,21 +2706,41 @@
       const gallerySticky = document.getElementById("gallerySticky");
       const backToTop = document.getElementById("backToTop");
       const sideNav = document.querySelector(".side-nav");
+      const wowEpochs = Array.from(document.querySelectorAll(".wow-epoch"));
+      const factNumbers = Array.from(
+        document.querySelectorAll(".fact__number"),
+      );
+      const timelineCards = [];
+      const galleryTrack = galleryScroll
+        ? galleryScroll.querySelector(".gallery-track")
+        : null;
+
+      const stickyMetrics = {
+        timeline: { scrollable: 0 },
+        gallery: { scrollable: 0 },
+      };
+
+      let ticking = false;
+      let resizeTimer = null;
 
       function runSiteLoader() {
         if (!siteLoader || !loaderYear) return;
 
-        const fromYear = 2026;
-        const toYear = 1776;
-        const duration = 4200;
+        const fromYear = 1776;
+        const toYear = 2026;
+        const duration = 3200;
         const appearDelay = 120;
-        const holdDelay = 700;
+        const startDelay = 520;
+        const holdDelay = 820;
         const fadeDelay = 720;
 
         loaderYear.textContent = fromYear;
+        if (loaderLineFill)
+          loaderLineFill.style.setProperty("--loader-progress", "0");
 
         setTimeout(() => {
           loaderYear.classList.add("is-visible");
+          siteLoader.classList.add("is-running");
         }, appearDelay);
 
         setTimeout(() => {
@@ -2099,27 +2748,63 @@
 
           const tick = (now) => {
             const progress = Math.min(1, (now - start) / duration);
-            const eased = progress * progress;
-            const year = Math.round(fromYear - (fromYear - toYear) * eased);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const year = Math.round(fromYear + (toYear - fromYear) * eased);
 
             loaderYear.textContent = year;
+            if (loaderLineFill) {
+              loaderLineFill.style.setProperty(
+                "--loader-progress",
+                progress.toFixed(3),
+              );
+            }
+
+            let currentStep = "Казённая палата";
+
+            loaderMilestones.forEach((item) => {
+              const milestoneYear = Number(item.dataset.year || 0);
+              const isActive = year >= milestoneYear;
+              item.classList.toggle("is-active", isActive);
+
+              if (isActive) {
+                const text = item.querySelector(
+                  ".site-loader__milestone-text",
+                )?.textContent;
+                if (text) currentStep = text;
+              }
+            });
+
+            if (loaderMobileStep) {
+              loaderMobileStep.textContent = currentStep;
+              loaderMobileStep.classList.add("is-active");
+            }
 
             if (progress < 1) {
               requestAnimationFrame(tick);
             } else {
               loaderYear.textContent = toYear;
+              if (loaderLineFill)
+                loaderLineFill.style.setProperty("--loader-progress", "1");
+              loaderMilestones.forEach((item) =>
+                item.classList.add("is-active"),
+              );
+              siteLoader.classList.add("is-complete");
+
               setTimeout(() => {
                 loaderYear.classList.add("is-fading");
                 setTimeout(() => {
                   siteLoader.classList.add("is-hidden");
                   document.body.classList.remove("is-loading");
+                  document.documentElement.classList.remove(
+                    "is-loading-scrollbar-hidden",
+                  );
                 }, fadeDelay);
               }, holdDelay);
             }
           };
 
           requestAnimationFrame(tick);
-        }, 1400);
+        }, startDelay);
       }
 
       function scrollToSection(id) {
@@ -2189,13 +2874,17 @@
       function typeTitle(title) {
         if (title.dataset.typed === "true") return;
         title.dataset.typed = "true";
+
         const originalHtml = title.innerHTML;
         const text = title.textContent.trim();
-        title.innerHTML = "";
+
+        title.style.minHeight = `${title.offsetHeight}px`;
+        title.textContent = "";
         title.classList.add("is-typed");
 
         const caret = document.createElement("span");
         caret.className = "type-caret";
+
         let index = 0;
 
         const tick = () => {
@@ -2210,6 +2899,7 @@
               caret.remove();
               title.innerHTML = originalHtml;
               title.classList.add("is-typed");
+              title.style.minHeight = "";
             }, 420);
           }
         };
@@ -2257,6 +2947,52 @@
       typeTitles.forEach((item) => typeObserver.observe(item));
       if (timelineShell) timelineObserver.observe(timelineShell);
 
+      const factObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            const element = entry.target;
+
+            if (element.dataset.counted === "true") {
+              factObserver.unobserve(element);
+              return;
+            }
+
+            element.dataset.counted = "true";
+
+            const targetValue = Number(
+              element.textContent.replace(/[^0-9]/g, ""),
+            );
+
+            const duration = 1800;
+            const start = performance.now();
+
+            const animate = (now) => {
+              const progress = Math.min(1, (now - start) / duration);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = Math.round(targetValue * eased);
+
+              element.textContent = current.toLocaleString("ru-RU");
+
+              if (progress < 1) {
+                requestAnimationFrame(animate);
+              } else {
+                element.textContent = targetValue.toLocaleString("ru-RU");
+              }
+            };
+
+            requestAnimationFrame(animate);
+            factObserver.unobserve(element);
+          });
+        },
+        {
+          threshold: 0.55,
+        },
+      );
+
+      factNumbers.forEach((item) => factObserver.observe(item));
+
       function getStickyProgress(stickyElement) {
         const rect = stickyElement.getBoundingClientRect();
         const total = stickyElement.offsetHeight - window.innerHeight;
@@ -2264,9 +3000,15 @@
         return Math.min(1, Math.max(0, -rect.top / total));
       }
 
-      function setupStickyScene(stickyElement, trackElement, extraOffset = 0) {
+      function measureStickyScene(
+        stickyElement,
+        trackElement,
+        metric,
+        extraOffset = 0,
+      ) {
         if (!stickyElement || !trackElement || window.innerWidth <= 900) {
           if (trackElement) trackElement.style.transform = "none";
+          if (metric) metric.scrollable = 0;
           return;
         }
 
@@ -2281,28 +3023,43 @@
           window.innerHeight * 1.8,
           scrollable + window.innerHeight,
         );
+
         stickyElement.style.setProperty(
           "--sticky-scroll-height",
           `${sceneHeight}px`,
         );
 
-        const progress = getStickyProgress(stickyElement);
-        trackElement.style.transform = `translate3d(${-scrollable * progress}px, 0, 0)`;
+        metric.scrollable = scrollable;
       }
 
-      function updateTimeline() {
-        setupStickyScene(
+      function applyStickyScene(stickyElement, trackElement, metric) {
+        if (!stickyElement || !trackElement || window.innerWidth <= 900) return;
+
+        const progress = getStickyProgress(stickyElement);
+        trackElement.style.transform = `translate3d(${-metric.scrollable * progress}px, 0, 0)`;
+      }
+
+      function measureStickyScenes() {
+        measureStickyScene(
           timelineSticky,
           timelineTrack,
+          stickyMetrics.timeline,
           window.innerWidth * 0.18,
+        );
+        measureStickyScene(
+          gallerySticky,
+          galleryTrack,
+          stickyMetrics.gallery,
+          window.innerWidth * 0.12,
         );
       }
 
+      function updateTimeline() {
+        applyStickyScene(timelineSticky, timelineTrack, stickyMetrics.timeline);
+      }
+
       function updateGallerySticky() {
-        const galleryTrack = galleryScroll
-          ? galleryScroll.querySelector(".gallery-track")
-          : null;
-        setupStickyScene(gallerySticky, galleryTrack, window.innerWidth * 0.12);
+        applyStickyScene(gallerySticky, galleryTrack, stickyMetrics.gallery);
       }
 
       function updateHeroPhotoCompare() {
@@ -2319,18 +3076,46 @@
           heroSection.offsetHeight - window.innerHeight,
         );
         const progress = Math.min(1, Math.max(0, -rect.top / total));
-        const eased = Math.pow(progress, 1.35);
 
         heroPhotoCompare.style.setProperty(
           "--hero-photo-progress",
-          eased.toFixed(3),
+          progress.toFixed(3),
         );
+      }
+
+      function updateWowParallax() {
+        if (!wowEpochs.length || window.innerWidth <= 900) return;
+
+        const scrollY = window.scrollY || window.pageYOffset || 0;
+
+        wowEpochs.forEach((item) => {
+          const depth = Number(item.dataset.depth || 0.16);
+          item.style.setProperty(
+            "--wow-parallax",
+            `${scrollY * depth * -0.18}px`,
+          );
+        });
       }
 
       function updateStickyScenes() {
         updateHeroPhotoCompare();
         updateTimeline();
         updateGallerySticky();
+        updateWowParallax();
+      }
+
+      function onScrollFrame() {
+        ticking = false;
+        updateStickyScenes();
+        updateActiveNav();
+        updateBackToTopVisibility();
+        showSideNav();
+      }
+
+      function requestScrollUpdate() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(onScrollFrame);
       }
 
       let sideNavIdleTimer = null;
@@ -2343,28 +3128,18 @@
         clearTimeout(sideNavIdleTimer);
 
         sideNavIdleTimer = setTimeout(() => {
-          if (!sideNav.matches(":hover")) {
-            sideNav.classList.add("is-idle");
-          }
+          sideNav.classList.add("is-idle");
         }, 2000);
       }
 
-      window.addEventListener(
-        "scroll",
-        () => {
-          updateStickyScenes();
-          updateActiveNav();
-          updateBackToTopVisibility();
-          showSideNav();
-        },
-        { passive: true },
-      );
+      window.addEventListener("scroll", requestScrollUpdate, { passive: true });
 
       window.addEventListener("resize", () => {
-        updateStickyScenes();
-        updateActiveNav();
-        updateBackToTopVisibility();
-        showSideNav();
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          measureStickyScenes();
+          requestScrollUpdate();
+        }, 120);
       });
 
       function updateBackToTopVisibility() {
@@ -2388,11 +3163,17 @@
         });
       }
 
+      measureStickyScenes();
       updateStickyScenes();
       updateActiveNav();
       updateBackToTopVisibility();
       showSideNav();
       runSiteLoader();
+
+      window.addEventListener("load", () => {
+        measureStickyScenes();
+        requestScrollUpdate();
+      });
     </script>
   </body>
 </html>
