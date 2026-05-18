@@ -3,19 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="./assets/image/favicon-dark.ico"
+      media="(prefers-color-scheme: light)"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="./assets/image/favicon-light.ico"
+      media="(prefers-color-scheme: dark)"
+    />
     <title>250 лет финансовым органам Тверской области</title>
     <style>
+      @font-face {
+        font-family: CormorantGaramond;
+        src: url(./fonts/CormorantGaramond-Regular.ttf);
+      }
+      @font-face {
+        font-family: Averta;
+        src: url(./fonts/AvertaDemoPECuttedDemo-Regular.otf);
+      }
       :root {
-        --blue: #39609e;
+        --blue: #112927;
+        --color3: #112927;
+        --menu-light: #f6f5f0;
         --white: #ffffff;
-        --bg: #f2f1ec;
+        --bg: #f7f4ef;
         --radius-image: 24px;
         --page-x: clamp(22px, 6vw, 110px);
         --section-gap: clamp(96px, 16vw, 220px);
         --text-width: 760px;
         --wide-width: 1280px;
-        --font-main: Arial, Helvetica, sans-serif;
-        --font-serif: Georgia, "Times New Roman", serif;
+        --font-main: Averta;
+        --font-serif: CormorantGaramond;
         --scrollbar-size: 10px;
         --scrollbar-track: var(--bg);
         --scrollbar-thumb: var(--blue);
@@ -67,10 +90,25 @@
       body {
         position: relative;
         margin: 0;
-        background: var(--bg);
+        background:
+          url("./assets/image/noise_menu.png") center center / cover fixed,
+          var(--bg);
         color: var(--blue);
         font-family: var(--font-main);
         overflow-x: clip;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background: linear-gradient(
+          180deg,
+          rgba(247, 244, 239, 0.92) 0%,
+          rgba(247, 244, 239, 0.88) 100%
+        );
+        pointer-events: none;
       }
 
       a {
@@ -217,11 +255,9 @@
         content: "";
         position: absolute;
         inset: 0;
-        opacity: 0.045;
-        background-image:
-          linear-gradient(90deg, rgba(57, 96, 158, 0.3) 1px, transparent 1px),
-          linear-gradient(180deg, rgba(57, 96, 158, 0.24) 1px, transparent 1px);
-        background-size: clamp(82px, 9vw, 150px) clamp(82px, 9vw, 150px);
+        opacity: 0.1;
+        background: url("./assets/image/logo.png") center center / auto 80vh
+          no-repeat;
         pointer-events: none;
       }
 
@@ -247,6 +283,13 @@
         display: grid;
         justify-items: center;
         gap: clamp(20px, 3.2vw, 38px);
+      }
+
+      .site-loader__mobile-logo {
+        display: none;
+        width: auto;
+        height: 130px;
+        object-fit: contain;
       }
 
       .site-loader.is-hidden {
@@ -450,7 +493,7 @@
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
         box-shadow: none;
-        color: var(--blue);
+        color: var(--menu-light);
         cursor: pointer;
         transition:
           background 0.22s ease,
@@ -491,10 +534,11 @@
       .side-nav__item.is-active {
         min-width: 0;
         width: auto;
-        background: rgba(242, 241, 236, 0.92);
+        background: var(--color3);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        box-shadow: 0 0 0 1px rgba(57, 96, 158, 0.12);
+        box-shadow: 0 0 0 1px rgba(17, 41, 39, 0.18);
+        color: var(--menu-light);
       }
 
       .side-nav:hover .side-nav__line,
@@ -516,7 +560,8 @@
         min-height: 38px;
         padding: 10px 14px;
         border-radius: 999px;
-        background: rgba(242, 241, 236, 0.92);
+        background: var(--color3);
+        color: var(--menu-light);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         box-shadow: 0 0 0 1px rgba(57, 96, 158, 0.12);
@@ -534,11 +579,11 @@
         min-height: 38px;
         padding: 10px 14px;
         border-radius: 999px;
-        background: rgba(242, 241, 236, 0.92);
+        background: var(--color3);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         box-shadow: 0 0 0 1px rgba(57, 96, 158, 0.12);
-        color: var(--blue);
+        color: var(--menu-light);
         cursor: pointer;
       }
 
@@ -563,7 +608,7 @@
         left: 0;
         width: 100%;
         height: 2px;
-        background: var(--blue);
+        background: var(--menu-light);
         transition:
           transform 0.25s ease,
           top 0.25s ease;
@@ -594,8 +639,8 @@
         display: none;
         align-items: center;
         padding: 72px 24px 40px;
-        background: var(--bg);
-        color: var(--blue);
+        background: var(--color3);
+        color: var(--menu-light);
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.25s ease;
@@ -621,7 +666,7 @@
         border: 0;
         padding: 0;
         background: transparent;
-        color: var(--blue);
+        color: var(--menu-light);
         font-family: var(--font-serif);
         font-size: clamp(34px, 11vw, 58px);
         line-height: 0.95;
@@ -635,7 +680,7 @@
         display: block;
         flex: 0 0 28px;
         height: 2px;
-        background: var(--blue);
+        background: var(--menu-light);
         opacity: 0.35;
       }
 
@@ -752,8 +797,8 @@
       .names-list p {
         margin: 0;
         max-width: 620px;
-        font-family: var(--font-serif);
-        font-size: clamp(25px, 3.2vw, 52px);
+        font-family: var(--font-main);
+        font-size: clamp(20px, 3.2vw, 32px);
         line-height: 1;
         letter-spacing: -0.045em;
       }
@@ -978,7 +1023,7 @@
         font-family: var(--font-serif);
         font-size: clamp(42px, 5vw, 72px);
         font-style: italic;
-        font-weight: 700;
+        /* font-weight: 700; */
         line-height: 0.82;
         letter-spacing: -0.075em;
       }
@@ -1120,6 +1165,20 @@
         max-width: 1000px;
       }
 
+      .final__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: clamp(24px, 4vw, 64px);
+      }
+
+      .final__logo {
+        width: 200px;
+        height: auto;
+        opacity: 1;
+        flex: 0 0 auto;
+      }
+
       .final__meta {
         display: flex;
         flex-wrap: wrap;
@@ -1165,11 +1224,11 @@
         min-height: 44px;
         padding: 12px 18px;
         border-radius: 999px;
-        background: rgba(242, 241, 236, 0.92);
+        background: var(--color3);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         box-shadow: 0 0 0 1px rgba(57, 96, 158, 0.18);
-        color: var(--blue);
+        color: var(--menu-light);
         cursor: pointer;
         transition: transform 0.22s ease;
       }
@@ -1656,7 +1715,7 @@
           top: 18px;
           z-index: 40;
           max-width: calc(100vw - 130px);
-          color: var(--blue);
+          color: var(--menu-light);
           font-size: 13px;
           line-height: 1.1;
           letter-spacing: 0.08em;
@@ -1819,6 +1878,13 @@
       }
 
       @media (max-width: 700px) {
+        .site-loader::before {
+          display: none;
+        }
+
+        .site-loader__mobile-logo {
+          display: block;
+        }
         .site-loader {
           padding: 28px 18px;
           place-items: center;
@@ -1919,6 +1985,21 @@
 
         .site-loader__timeline {
           margin-top: 72px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .final__logo {
+          display: none;
+        }
+
+        .final__head {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .final__logo {
+          width: 140px;
         }
       }
 
@@ -2078,6 +2159,11 @@
       aria-label="Загрузка сайта"
     >
       <div class="site-loader__inner">
+        <img
+          class="site-loader__mobile-logo"
+          src="./assets/image/logo.png"
+          alt="Логотип"
+        />
         <p class="site-loader__eyebrow">История финансовой системы</p>
         <p class="site-loader__year" id="loaderYear">1776</p>
         <div class="site-loader__timeline" aria-hidden="true">
@@ -2130,7 +2216,7 @@
           type="button"
           data-target="hero"
         >
-          Главная
+          250 лет истории
         </button>
         <button
           class="mobile-menu-panel__item"
@@ -2165,7 +2251,7 @@
           type="button"
           data-target="final"
         >
-          Финал
+          2026
         </button>
       </div>
     </div>
@@ -2173,15 +2259,15 @@
     <nav class="side-nav" aria-label="Навигация по странице">
       <button class="side-nav__item is-active" type="button" data-target="hero">
         <span class="side-nav__line"></span
-        ><span class="side-nav__label">Главная</span>
+        ><span class="side-nav__label">250 лет истории</span>
       </button>
       <button class="side-nav__item" type="button" data-target="congrats">
         <span class="side-nav__line"></span
-        ><span class="side-nav__label">Поздравления первых лиц</span>
+        ><span class="side-nav__label">Поздравления</span>
       </button>
       <button class="side-nav__item" type="button" data-target="history">
         <span class="side-nav__line"></span
-        ><span class="side-nav__label">История Министерства</span>
+        ><span class="side-nav__label">История</span>
       </button>
       <button class="side-nav__item" type="button" data-target="today">
         <span class="side-nav__line"></span
@@ -2193,7 +2279,7 @@
       </button>
       <button class="side-nav__item" type="button" data-target="final">
         <span class="side-nav__line"></span
-        ><span class="side-nav__label">Финал</span>
+        ><span class="side-nav__label">2026</span>
       </button>
     </nav>
 
@@ -2636,9 +2722,16 @@
         data-epoch="250"
       >
         <div class="content-row reveal">
-          <h2 class="section-title final__title type-title">
-            250 лет финансовой истории Тверской области
-          </h2>
+          <div class="final__head">
+            <h2 class="section-title final__title type-title">
+              250 лет финансовой истории Тверской области
+            </h2>
+            <img
+              class="final__logo"
+              src="./assets/image/logo.png"
+              alt="Логотип"
+            />
+          </div>
           <div class="final__meta">
             <a
               href="https://www.tverfin.ru/"
